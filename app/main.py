@@ -44,7 +44,3 @@ def delete_contact(request: Request, contact_id: uuid.UUID, db: Session = Depend
 @limiter.limit("100/minute")
 def update_contact(request: Request, contact_id: uuid.UUID, contact_data: schemas.ContactUpdate, db: Session = Depends(get_db)):
     return utils.update_contact(db, contact_id, contact_data)
-
-
-if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8000)
