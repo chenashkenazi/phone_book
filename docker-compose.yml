@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user_test
+      POSTGRES_PASSWORD: test123
+      POSTGRES_DB: phonebook
+    ports:
+      - 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: 'postgresql://user_test:test123@db/phonebook'
+
+volumes:
+  postgres_data:
