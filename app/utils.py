@@ -94,8 +94,11 @@ def update_contact(db: Session, contact_id: uuid.UUID, contact_data: schemas.Con
         if same_phone_number:
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                                 detail="Contact with the same phone number exists.")
+    if not contact_data.model_dump(exclude_unset=True).items():
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="Invalid fields.")
 
-    for key, value in contact_data.dict(exclude_unset=True).items():
+    for key, value in contact_data.model_dump(exclude_unset=True).items():
         setattr(contact, key, value)
 
     db.commit()
