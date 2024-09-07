@@ -1,24 +1,24 @@
-# Phone Book API
+# Phone Book API ☎️
 
-Welcome to my phone book API
+Welcome to my phone book API! 
 
-You can use this API for a phone book app. It includes the basic phone book operations.
+You can use this API for a phone book app. It includes the basic phone book operations such as adding, searching and deleting contacts.
 
 ### Features
-- **Create contact**: create a new contact with the following fields:
-    - First name: a string up to 30 characters.
-    - Last name: a string up to 30 characters.
-    - Phone number: up to 9 digits.
-    - Address: a string up to 40 characters.
-    - id: uuid that any contact gets at creation.
-    - Favorite: a boolean represents if a contact is a favorite or not. Default is false.
-- **Get contacts**: get all the contact from the database in parts. Optional parameters:
-    - Limit: the amount of contacts to returnn from the database. Default is 10.
-    - Page: which part of documents to return according to limit.
-    - Favorites: put the contacts that marked as favorites at the beginning of the list.
-- **Search contacts**: Free text search to find contacts, by name or phone number.
-- **Delete contact**: delete a contact from the database by its id.
-- **Update contact**: update contact's details
+- **Create contact**: Create a new contact with the following fields:
+    - First name: A string up to 30 characters.
+    - Last name: A string up to 30 characters.
+    - Phone number: Up to 9 digits.
+    - Address: A string up to 40 characters.
+    - id: A uuid assigned to the contact upon creation.
+    - Favorite: a boolean representing if a contact is marked as favorite. Default is `false`.
+- **Get contacts**: Get all the contact from the database in paginated form. Optional parameters:
+    - Limit: The number of contacts to return from the database. Default is 10.
+    - Page: The page of results to return based on the limit.
+    - Favorites: Prioritize contacts marked as favorites at the top of the list.
+- **Search contacts**: Free-text search to find contacts by name or phone number.
+- **Delete contact**: Delete a contact from the database by its id.
+- **Update contact**: Update contact's details.
 
 ### Important Points
 - It is not possible to save two records with the same phone number.
@@ -34,7 +34,7 @@ Clone the git repository: paste the following command in your terminal:
 ```bash
 git clone https://github.com/chenashkenazi/phone_book.git
 ```
-Make sure [docker desktop](https://www.docker.com/products/docker-desktop/) in Installed on your computer, or anything that runs docker engine.
+Make sure [docker desktop](https://www.docker.com/products/docker-desktop/) in Installed on your computer, or that you have another environment that can run Docker Engine.
 
 
 Then run the docker compose command:
@@ -43,11 +43,11 @@ docker-compose up --build
 ```
 
 ### Locally
-If you want to run the API locally, you need to make sure to have a Postgres database running and a `.env` file with the database URL.
+If you want to run the API locally, make sure to have a Postgres database running and a `.env` file with the database URL.
 
 ## Usage
 ### Create new contact
-Create new contact with all its details
+Create new contact with all its details:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"first_name": "John", "last_name": "Doe", "phone_number": "027986482", "address": "Hollywood", "is_favorite": "true"}' http://localhost:8000/contacts/
@@ -56,12 +56,12 @@ curl -X POST -H "Content-Type: application/json" -d '{"first_name": "John", "las
 ### Get contacts
 Get all contact from the database
 
-The list of contact that returned is ordered by asceding order of the first names.
+The list of contact that returned is ordered by ascending order of the first names:
 
 ```bash
 curl -X GET http://localhost:8000/contacts/
 ```
-Optional parameters to add:
+Optional parameters:
 
 ```bash
 curl -X GET http://localhost:8000/contacts/?limit=10&page=1&favorites=true
@@ -95,3 +95,4 @@ To run the tests use the Pytest command:
 pytest
 ```
 
+Thank you for the opportunity!
