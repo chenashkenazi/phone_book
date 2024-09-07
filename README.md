@@ -46,6 +46,7 @@ docker-compose up --build
 If you want to run the API locally, make sure to have a Postgres database running and a `.env` file with the database URL.
 
 ## Usage
+You can use [this postman collection](https://team22-1890.postman.co/workspace/team-Workspace~ea3a6291-66a7-4810-821c-d5c4ecb0c298/collection/12175517-3feeb71d-7b65-4189-b9e1-4dc0d5715381?action=share&creator=12175517) for testing.
 ### Create new contact
 Create new contact with all its details:
 
