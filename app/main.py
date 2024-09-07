@@ -6,8 +6,6 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 import uuid
 
-import uvicorn
-
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
