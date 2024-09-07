@@ -22,7 +22,7 @@ You can use this API for a phone book app. It includes the basic phone book oper
 
 ### Important Points
 - It is not possible to save two records with the same phone number.
-- You can view the API documentation when is it running at http://0.0.0.0:8000/docs.
+- You can view the API documentation when is it running at http://localhost:8000/docs.
 - The API is limited to 100 requests per minute.
 
 
@@ -50,7 +50,7 @@ If you want to run the API locally, you need to make sure to have a Postgres dat
 Create new contact with all its details
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"first_name": "", "last_name": "", "phone_number": "", "address": "", "is_favorite": "true"}' http://0.0.0.0:8000/contacts/
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "John", "last_name": "Doe", "phone_number": "027986482", "address": "Hollywood", "is_favorite": "true"}' http://localhost:8000/contacts/
 ```
 
 ### Get contacts
@@ -59,30 +59,30 @@ Get all contact from the database
 The list of contact that returned is ordered by asceding order of the first names.
 
 ```bash
-curl -X GET http://0.0.0.0:8000/contacts/
+curl -X GET http://localhost:8000/contacts/
 ```
 Optional parameters to add:
 
 ```bash
-curl -X GET http://127.0.0.1:8000/contacts/?limit=10&page=1&favorites=true
+curl -X GET http://localhost:8000/contacts/?limit=10&page=1&favorites=true
 ```
 
 ### Search contact
 Search contact by name or phone number
 ```bash
-curl -X GET "http://127.0.0.1:8000/contacts/search/?search_text=keyword"
+curl -X GET "http://localhost:8000/contacts/search/?search_text=keyword"
 ```
 
 ### Delete contact
 Delete a contact by its id
 ```bash
-curl -X DELETE http://127.0.0.1:8000/contacts/uuid
+curl -X DELETE http://localhost:8000/contacts/uuid
 ```
 
 ### Update contact
 Update contact details by its id
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d '{"key":"value", "key", "value"}' http://127.0.0.1:8000/contacts/uuid
+curl -X PUT -H "Content-Type: application/json" -d '{"key":"value", "key", "value"}' http://localhost:8000/contacts/uuid
 ```
 
 ## Tests
